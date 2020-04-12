@@ -1,0 +1,428 @@
+{
+  "Variables": [
+    {
+      "name": "BankArea",
+      "value": "Coordinate(2946, 3370, 0)",
+      "type": "COORDINATE"
+    },
+    {
+      "name": "5",
+      "value": "5",
+      "type": "NUMBER"
+    },
+    {
+      "name": "Banker",
+      "value": "Banker",
+      "type": "NPC"
+    },
+    {
+      "name": "Emily",
+      "value": "Emily",
+      "type": "NPC"
+    },
+    {
+      "name": "Kaylee",
+      "value": "Kaylee",
+      "type": "NPC"
+    },
+    {
+      "name": "BarArea",
+      "value": "Coordinate(2956, 3368, 0)",
+      "type": "COORDINATE"
+    },
+    {
+      "name": "Coins",
+      "value": "Coins",
+      "type": "SPRITE_ITEM"
+    },
+    {
+      "name": "continue",
+      "value": "continue",
+      "type": "STRING"
+    },
+    {
+      "name": "Dwarven stout",
+      "value": "Can I have a Dwarven Stout?",
+      "type": "STRING"
+    },
+    {
+      "name": "Talk-to",
+      "value": "Talk-to",
+      "type": "ACTION"
+    },
+    {
+      "name": "Can I have",
+      "value": "Can I have ",
+      "type": "STRING"
+    }
+  ],
+  "NodeCollection": [
+    {
+      "name": "StartCondition",
+      "base": {
+        "id": "1337d459-388e-46a6-9299-15fa5ee78a71",
+        "position": {
+          "x": "0.0",
+          "y": "0.0"
+        },
+        "flowTasks": {
+          "success": "ea2a4071-f5b6-4205-84ae-2be434800ffb"
+        },
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "GameMode": "OSRS",
+        "IntervalLow": 100.0,
+        "IntervalHigh": 1000.0
+      }
+    },
+    {
+      "name": "InventoryCondition",
+      "base": {
+        "id": "ea2a4071-f5b6-4205-84ae-2be434800ffb",
+        "position": {
+          "x": "33.0",
+          "y": "388.0"
+        },
+        "flowTasks": {
+          "success": "bafde692-ba8a-49e9-84ca-75dcbf84f293",
+          "failure": "1b95dc06-7e9b-4675-ac42-28b371420ab1"
+        },
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "bool0": false,
+          "bool1": false,
+          "bool2": false,
+          "type": "InventoryQuery"
+        }
+      },
+      "variables": {
+        "ItemValues": [
+          "Coins"
+        ],
+        "ItemRegex": true,
+        "Condition": "Contains any of:"
+      }
+    },
+    {
+      "name": "InventoryCondition",
+      "base": {
+        "id": "bafde692-ba8a-49e9-84ca-75dcbf84f293",
+        "position": {
+          "x": "555.0",
+          "y": "51.0"
+        },
+        "flowTasks": {
+          "success": "3116e884-f12c-4737-b016-006bf3a9138c",
+          "failure": "2b524362-1de7-438a-b82b-6f0c2dbed635"
+        },
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "bool0": false,
+          "bool1": false,
+          "bool2": false,
+          "type": "InventoryQuery"
+        }
+      },
+      "variables": {
+        "ItemValues": [],
+        "ItemRegex": false,
+        "Condition": "Is Full"
+      }
+    },
+    {
+      "name": "CalculationCondition",
+      "base": {
+        "id": "2b524362-1de7-438a-b82b-6f0c2dbed635",
+        "position": {
+          "x": "958.0",
+          "y": "461.0"
+        },
+        "flowTasks": {
+          "success": "a086c2bb-b3c6-4759-9149-b743c9532b60",
+          "failure": "a153023b-1cbe-45de-a6c9-607b3a5114b0"
+        },
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "within": "",
+          "type": "NpcQuery"
+        }
+      },
+      "variables": {
+        "Values": [],
+        "ValueRegex": false,
+        "Comparators": [
+          "Emily",
+          "Kaylee"
+        ],
+        "CompRegex": true,
+        "Condition": "Reachable",
+        "Type": "NPC"
+      }
+    },
+    {
+      "name": "TraversalAction",
+      "base": {
+        "id": "a153023b-1cbe-45de-a6c9-607b3a5114b0",
+        "position": {
+          "x": "1348.0",
+          "y": "668.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Condition": "To area:",
+        "Coordinates": [
+          "BarArea"
+        ],
+        "Exact": false,
+        "Radius": "5"
+      }
+    },
+    {
+      "name": "ChatDialogAction",
+      "base": {
+        "id": "4297b31f-a380-4d4e-baf9-82a1414962da",
+        "position": {
+          "x": "1900.0",
+          "y": "174.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Values": [
+          "continue"
+        ],
+        "ItemRegex": true
+      }
+    },
+    {
+      "name": "ChatDialogCondition",
+      "base": {
+        "id": "a086c2bb-b3c6-4759-9149-b743c9532b60",
+        "position": {
+          "x": "1327.0",
+          "y": "191.0"
+        },
+        "flowTasks": {
+          "success": "4297b31f-a380-4d4e-baf9-82a1414962da",
+          "failure": "39de47a8-2f55-41b3-9219-331fec0c7b8b"
+        },
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Values": [
+          "continue"
+        ],
+        "ItemRegex": true
+      }
+    },
+    {
+      "name": "ChatDialogCondition",
+      "base": {
+        "id": "39de47a8-2f55-41b3-9219-331fec0c7b8b",
+        "position": {
+          "x": "1676.0",
+          "y": "408.0"
+        },
+        "flowTasks": {
+          "success": "143581b2-39d3-4f8e-893b-0cc4fdc9b5e8",
+          "failure": "295636db-5c49-4016-809e-02edd62499e7"
+        },
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Values": [
+          "Can I have"
+        ],
+        "ItemRegex": true
+      }
+    },
+    {
+      "name": "ChatDialogAction",
+      "base": {
+        "id": "143581b2-39d3-4f8e-893b-0cc4fdc9b5e8",
+        "position": {
+          "x": "2290.0",
+          "y": "282.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Values": [
+          "Can I have"
+        ],
+        "ItemRegex": true
+      }
+    },
+    {
+      "name": "TimerCondition",
+      "base": {
+        "id": "295636db-5c49-4016-809e-02edd62499e7",
+        "position": {
+          "x": "2069.0",
+          "y": "559.0"
+        },
+        "flowTasks": {
+          "success": "aa5bfd65-a0d6-4802-a32a-2018832f4092",
+          "failure": "aa5bfd65-a0d6-4802-a32a-2018832f4092"
+        },
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Comparator": "1",
+        "Condition": "After X seconds runtime",
+        "IntervalLow": 1906.6823584771143,
+        "IntervalHigh": 3318.217287752628
+      }
+    },
+    {
+      "name": "InteractionAction",
+      "base": {
+        "id": "aa5bfd65-a0d6-4802-a32a-2018832f4092",
+        "position": {
+          "x": "2640.0",
+          "y": "516.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "list4": [
+            "Talk-to"
+          ],
+          "within": "",
+          "type": "NpcQuery"
+        }
+      },
+      "variables": {
+        "Condition": "Npc",
+        "ItemValues": [
+          "Emily",
+          "Kaylee"
+        ],
+        "ItemRegex": false,
+        "ActionValues": [
+          "Talk-to"
+        ],
+        "ActionRegex": true
+      }
+    },
+    {
+      "name": "CalculationCondition",
+      "base": {
+        "id": "3116e884-f12c-4737-b016-006bf3a9138c",
+        "position": {
+          "x": "984.0",
+          "y": "-609.0"
+        },
+        "flowTasks": {
+          "success": "9d637697-dece-4aa9-a7f9-592c08ad135a",
+          "failure": "3fc92b8b-b918-4020-bfc8-d7fcb8c346b1"
+        },
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "within": "",
+          "type": "NpcQuery"
+        }
+      },
+      "variables": {
+        "Values": [],
+        "ValueRegex": false,
+        "Comparators": [
+          "Banker"
+        ],
+        "CompRegex": false,
+        "Condition": "Visible",
+        "Type": "NPC"
+      }
+    },
+    {
+      "name": "TraversalAction",
+      "base": {
+        "id": "3fc92b8b-b918-4020-bfc8-d7fcb8c346b1",
+        "position": {
+          "x": "1378.0",
+          "y": "-292.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0
+      },
+      "variables": {
+        "Condition": "To area:",
+        "Coordinates": [
+          "BankArea"
+        ],
+        "Exact": false,
+        "Radius": "5"
+      }
+    },
+    {
+      "name": "BankDepositAction",
+      "base": {
+        "id": "9d637697-dece-4aa9-a7f9-592c08ad135a",
+        "position": {
+          "x": "1513.0",
+          "y": "-653.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0,
+        "queryData": {
+          "bool0": false,
+          "bool1": false,
+          "bool2": false,
+          "type": "InventoryQuery"
+        }
+      },
+      "variables": {
+        "Values": [
+          "Coins"
+        ],
+        "ItemRegex": true,
+        "Condition": "All except",
+        "ConditionRegex": true
+      }
+    },
+    {
+      "name": "StopAction",
+      "base": {
+        "id": "1b95dc06-7e9b-4675-ac42-28b371420ab1",
+        "position": {
+          "x": "535.0",
+          "y": "585.0"
+        },
+        "flowTasks": {},
+        "delayMultiplier": 1.0
+      }
+    }
+  ],
+  "BotCategory": "OTHER",
+  "inventoryData": {
+    "invPresets": [
+      "BronzeBarMats"
+    ],
+    "invPreset_BronzeBarMats": [
+      {
+        "name": "Copper ore",
+        "id": 436,
+        "noted": false,
+        "quantity": 14,
+        "selected": true
+      },
+      {
+        "name": "Tin ore",
+        "id": 438,
+        "noted": false,
+        "quantity": 14,
+        "selected": true
+      }
+    ]
+  },
+  "internalData": {
+    "Mouse multiplier": 1.0,
+    "Mouse path": "MLP_PATH_GENERATOR",
+    "Disable advanced": false
+  }
+}
